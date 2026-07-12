@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>S-AES Simulator — Simplified Advanced Encryption Standard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand__mark">01001</span>
+      <div class="brand__text">
+        <h1>S-AES <span>Simulator</span></h1>
+        <p>Simplified Advanced Encryption Standard — 16-bit block cipher over GF(2⁴)</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ============ INPUT PANEL ============ -->
+    <section class="panel panel--input" aria-label="Form input">
+      <h2 class="panel__title"><span class="panel__num">01</span> Input</h2>
+
+      <form id="saes-form" autocomplete="off">
+        <div class="mode-switch">
+          <label class="mode-option">
+            <input type="radio" name="mode" value="encrypt" checked />
+            <span>Enkripsi</span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="mode" value="decrypt" />
+            <span>Dekripsi</span>
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="input-bits" id="input-label">Plaintext (16 bit biner)</label>
+          <input type="text" id="input-bits" placeholder="cth: 0110111101101011" maxlength="16" required inputmode="numeric" />
+          <span class="field__hint">Hanya karakter 0 dan 1, tepat 16 digit.</span>
+        </div>
+
+        <div class="field">
+          <label for="key-bits">Kunci (16 bit biner)</label>
+          <input type="text" id="key-bits" placeholder="cth: 1010011100111011" maxlength="16" required inputmode="numeric" />
+          <span class="field__hint">Hanya karakter 0 dan 1, tepat 16 digit.</span>
+        </div>
+
+        <div id="error-box" class="error-box hidden" role="alert"></div>
+
+        <div class="btn-row">
+          <button type="submit" class="btn btn--primary">Submit</button>
+          <button type="button" id="reset-btn" class="btn btn--ghost">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ============ OUTPUT PANEL ============ -->
+    <section id="output-section" class="panel panel--output hidden" aria-label="Hasil">
+      <h2 class="panel__title"><span class="panel__num">02</span> Hasil</h2>
+      <p class="output-caption" id="output-caption">Ciphertext</p>
+      <div class="output-display">
+        <div class="output-display__item">
+          <span class="output-display__label">Biner</span>
+          <span class="output-display__value" id="output-bin">-</span>
+        </div>
+        <div class="output-display__item">
+          <span class="output-display__label">Heksadesimal</span>
+          <span class="output-display__value" id="output-hex">-</span>
+        </div>
+      </div>
+      <button type="button" id="steps-toggle" class="btn btn--outline" data-open="true">
+        Sembunyikan Langkah Perhitungan ▲
+      </button>
+    </section>
+
+    <!-- ============ STEP BY STEP ============ -->
+    <section class="panel panel--steps" aria-label="Langkah perhitungan">
+      <h2 class="panel__title"><span class="panel__num">03</span> Langkah Perhitungan</h2>
+      <div id="steps-container" class="steps-container hidden"></div>
+    </section>
+
+    <!-- ============ REFERENCE TABLES ============ -->
+    <section class="panel panel--reference" aria-label="Tabel referensi">
+      <h2 class="panel__title"><span class="panel__num">04</span> Tabel Referensi</h2>
+
+      <div class="ref-block">
+        <h3>S-Box (SubNibble)</h3>
+        <div class="table-scroll"><table id="sbox-table" class="ref-table"></table></div>
+      </div>
+
+      <div class="ref-block">
+        <h3>Inverse S-Box (InvSubNibble)</h3>
+        <div class="table-scroll"><table id="invsbox-table" class="ref-table"></table></div>
+      </div>
+
+      <div class="ref-block ref-block--split">
+        <div>
+          <h3>Matriks MixColumns</h3>
+          <pre class="matrix-pre">| 1  4 |
+| 4  1 |</pre>
+          <h3>Matriks InvMixColumns</h3>
+          <pre class="matrix-pre">| 9  2 |
+| 2  9 |</pre>
+          <p class="ref-note">Operasi perkalian di GF(2⁴), polinomial irredusibel x⁴ + x + 1 (0x13).</p>
+        </div>
+        <div>
+          <h3>Konstanta RCON</h3>
+          <pre class="matrix-pre">RCON1 = 1000 0000 (0x80)
+RCON2 = 0011 0000 (0x30)</pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Dibuat untuk Tugas Individu Mata Kuliah Kriptografi — Simulasi S-AES · Semester Genap 2025/2026</p>
+  </footer>
+
+  <script src="js/saes-core.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
