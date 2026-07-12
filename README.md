@@ -96,6 +96,9 @@ plain_bits, plain_hex = decrypt(cipher_bits, "1010011100111011")
 
 ## 5. Deploy ke Domain `.my.id`
 
+🔗 **Aplikasi sudah di-hosting dan bisa diakses langsung di:**
+**[www.s-aesputraaliansyah.my.id](https://www.s-aesputraaliansyah.my.id)**
+
 Karena aplikasi ini statis (tidak butuh server Python/Node saat runtime — file `saes.py` hanya untuk CLI/cross-check lokal), Anda bisa deploy dengan opsi berikut:
 
 - **GitHub Pages / Netlify / Vercel** (gratis) → arahkan *custom domain* `.my.id` Anda ke sana melalui DNS (CNAME/A record).
