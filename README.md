@@ -2,8 +2,6 @@
 
 Aplikasi web simulasi algoritma **S-AES (Simplified Advanced Encryption Standard)**, dibuat untuk Tugas Individu Mata Kuliah Kriptografi (Semester Genap 2025/2026). Aplikasi mendukung proses **enkripsi** dan **dekripsi** blok 16-bit dengan kunci 16-bit, lengkap dengan tampilan **langkah perhitungan** (Key Expansion, SubNibbles, ShiftRows, MixColumns, AddRoundKey) secara rinci di GF(2⁴).
 
-> ⚠️ **Catatan penting:** Kode ini adalah *starting point*. Sesuai ketentuan akademik pada modul tugas, Anda wajib memahami, memodifikasi seperlunya, dan bisa menjelaskan setiap bagian kode (termasuk operasi GF(2⁴)) saat presentasi/konfirmasi dosen.
-
 ---
 
 ## 1. Struktur Folder
