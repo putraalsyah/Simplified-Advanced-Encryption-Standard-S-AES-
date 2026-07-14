@@ -35,7 +35,7 @@ Aplikasi ini **murni client-side** (HTML/CSS/JS), tidak butuh server backend/dat
 Jika punya Python terinstall:
 ```bash
 cd saes-webapp
-python3 -m http.server 8000
+python -m http.server 8000
 ```
 Lalu buka `http://localhost:8000` di browser.
 
@@ -81,7 +81,7 @@ File `python/saes.py` berisi implementasi S-AES yang identik secara logika denga
 Jalankan:
 ```bash
 cd python
-python3 saes.py
+python saes.py
 ```
 Ikuti instruksi di terminal: pilih mode (1 = Enkripsi, 2 = Dekripsi), lalu masukkan kunci dan plaintext/ciphertext 16-bit. Semua langkah perhitungan (Key Expansion, SubNibbles, ShiftRows, MixColumns/InvMixColumns beserta trace perkalian GF(2⁴), AddRoundKey) akan dicetak ke terminal.
 
@@ -98,16 +98,6 @@ plain_bits, plain_hex = decrypt(cipher_bits, "1010011100111011")
 
 🔗 **Aplikasi sudah di-hosting dan bisa diakses langsung di:**
 **[www.s-aesputraaliansyah.my.id](https://www.saesputraaliansyah.my.id)**
-
-Karena aplikasi ini statis (tidak butuh server Python/Node saat runtime — file `saes.py` hanya untuk CLI/cross-check lokal), Anda bisa deploy dengan opsi berikut:
-
-- **GitHub Pages / Netlify / Vercel** (gratis) → arahkan *custom domain* `.my.id` Anda ke sana melalui DNS (CNAME/A record).
-- **Shared hosting biasa** → upload isi folder `saes-webapp/` (khususnya `index.html`, `css/`, `js/`) ke `public_html` via FTP/cPanel File Manager.
-
-Pastikan struktur folder (`css/`, `js/`) tetap sama persis dengan path yang direferensikan di `index.html`.
-
-*(Sesuai permintaan, proses deploy dilakukan sendiri oleh mahasiswa.)*
-
 ---
 
 ## 6. Ringkasan Algoritma yang Diimplementasikan
